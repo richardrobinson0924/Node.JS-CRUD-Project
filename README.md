@@ -1,5 +1,8 @@
 # Node.JS-CRUD-Project
 
+[![Actions Status](https://github.com/richardrobinson0924/Node.JS-CRUD-Project/workflows/Node.js%20CI/badge.svg)](https://github.com/richardrobinson0924/Node.JS-CRUD-Project/actions)
+
+
 A super-simple basic node.js CRUD project
 
 ----
