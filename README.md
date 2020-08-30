@@ -8,7 +8,7 @@ A super-simple basic node.js CRUD project
 
 1. Download and install `npm` and `MongoDB`
 2. In a console, launch `mongo`
-3. In the project, run `node ./app.js`
+3. In the project, run `npm start` to start the server, or `npm test` to run the tests
 
 
 **Endpoint**: `http://localhost:5000/api`
@@ -20,7 +20,7 @@ A super-simple basic node.js CRUD project
 $ curl http://localhost:5000/api/users \
     -X POST \
     -H "Content-Type: application/json" \
-    -d '{"firstName": "Richard", "lastName": "Robinson", "type": "student", "birthdate": "1999-09-24T18:25:43"}'
+    -d '{"name": "Richard Robinson", "age": 20}'
 ```
 
 **Fetching all users:**
@@ -28,8 +28,8 @@ $ curl http://localhost:5000/api/users \
 $ curl http://localhost:5000/api/users
 ```
 
-By default, the results are sorted by the users' `lastName` property.
-To optionally filter based on `type`, add the query parameter `?type=<student|teacher|administration>`
+By default, the results are sorted by the users' `name` property.
+To optionally filter based on `age`, add the query parameter `?age=<NUMBER>`
 
 The request gets a JSON response in the following format:
 
@@ -37,10 +37,8 @@ The request gets a JSON response in the following format:
 [
   {
     "_id": "5f4b0b2c57857b0851e544f8",
-    "firstName": "Richard",
-    "lastName": "Robinson",
-    "type": "student",
-    "birthdate": "2015-04-23T18:25:43.511Z",
+    "name": "Richard Robinson",
+    "age": 20
   }
 ]
 ```
@@ -57,8 +55,8 @@ $ curl http://localhost:5000/api/users/<ID> -X DELETE -I
 
 **Updating a user:**
 ```bash
-curl http://localhost:5000/api/users/<ID> \
+$ curl http://localhost:5000/api/users/<ID> \
     -X PATCH \
     -H "Content-Type: application/json" \
-    -d '{"firstName":"Bob"}'
+    -d '{"name": "John Doe"}'
 ```

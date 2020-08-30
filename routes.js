@@ -16,16 +16,16 @@ router.delete("/users/:id", async (req, res) => {
 })
 
 /**
- * GETs all users matching the specified `type` query
+ * GETs all users matching the specified `age` query
  */
 router.get('/users', async (req, res) => {
-    const type = req.query['type']
+    const age = req.query['age']
 
     const users = await (
-        type === undefined
+        age === undefined
             ? User.find()
-            : User.find({type: type})
-    ).sort({lastName: 1})
+            : User.find({age: age})
+    ).sort({name: 1})
 
     res.send(users)
 })
@@ -47,20 +47,12 @@ router.patch('/users/:id', async (req, res) => {
     try {
         const user = await User.findOne({_id: req.params.id});
 
-        if (req.body.firstName) {
-            user.firstName = req.body.firstName
+        if (req.body.name) {
+            user.name = req.body.name
         }
 
-        if (req.body.lastName) {
-            user.lastName = req.body.lastName
-        }
-
-        if (req.body.type) {
-            user.type = req.body.type
-        }
-
-        if (req.body.birthdate) {
-            user.birthdate = req.body.birthdate
+        if (req.body.age) {
+            user.age = req.body.age
         }
 
         await user.save()
@@ -76,10 +68,8 @@ router.patch('/users/:id', async (req, res) => {
  */
 router.post('/users', async (req, res) => {
     const user = new User({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        type: req.body.type,
-        birthdate: req.body.birthdate,
+        name: req.body.name,
+        age: req.body.age
     })
 
     await user.save()
