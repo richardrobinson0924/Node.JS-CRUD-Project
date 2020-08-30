@@ -57,7 +57,7 @@ $ curl http://localhost:5000/api/users/<ID> -X DELETE -I
 
 **Updating a user:**
 ```bash
-curl http://localhost:5000/api/posts/<ID> \
+curl http://localhost:5000/api/users/<ID> \
     -X PATCH \
     -H "Content-Type: application/json" \
     -d '{"firstName":"Bob"}'
